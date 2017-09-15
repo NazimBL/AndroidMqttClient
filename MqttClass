@@ -18,13 +18,14 @@
         setContentView(R.layout.activity_mqtt_test);
         send=(Button)findViewById(R.id.send_id);
         text=(TextView)findViewById(R.id.sub);
+        
         MqttSetup();
         MqttConnect();
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                publish(topic,"24µ");
+                publish(topic,"hello world");
             }
         });
 
@@ -33,7 +34,8 @@
             public void connectionLost(Throwable cause) {
 
             }
-
+            
+            //background notification 
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
                         text.setText("Topic :"+topic+"\nMessage :"+message);
@@ -47,6 +49,8 @@
 
     }
     void MqttSetup(){
+        
+        //client settings and communication options
         String clientId = "ExampleAndroidClient";
         client = new MqttAndroidClient(MqttTest.this,BROKER,clientId);
         options = new MqttConnectOptions();
