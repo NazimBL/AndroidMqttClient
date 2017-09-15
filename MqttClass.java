@@ -93,7 +93,7 @@
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    MainActivity.myToast("ERROR 404 xD"+asyncActionToken.toString(),MqttTest.this);
+                    MainActivity.myToast("publish error"+asyncActionToken.toString(),MqttTest.this);
                 }
             });
         }catch(Exception e){
